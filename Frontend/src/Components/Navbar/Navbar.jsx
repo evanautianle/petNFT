@@ -1,11 +1,27 @@
-import React from 'react'
+// src/Components/Navbar/Navbar.jsx
+import React, { useEffect } from 'react';
+import { useWeb3 } from '../../contexts/Web3Context';
+import './Navbar.css';
 
 const Navbar = () => {
-  return (
-    <div>
-        <h1>Andre Choi</h1>
-    </div>
-  )
-}
+  const { account, connectWallet } = useWeb3();
 
-export default Navbar
+  useEffect(() => {
+    if (account) {
+      console.log('Connected account:', account);
+    }
+  }, [account]);
+
+  return (
+    <nav className="navbar">
+      <h1>PetNFT</h1>
+      {account ? (
+        <p>Connected: {account}</p>
+      ) : (
+        <button onClick={connectWallet}>Connect Wallet</button>
+      )}
+    </nav>
+  );
+};
+
+export default Navbar;

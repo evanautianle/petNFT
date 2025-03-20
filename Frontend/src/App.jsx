@@ -1,12 +1,17 @@
-import React from 'react'
-import Home from './Pages/Home/Home.jsx'
+// src/App.jsx
+import React from 'react';
+import { Web3Provider } from './contexts/Web3Context';
+import Navbar from './Components/Navbar/Navbar';
 
-const App = () => {
+function App() {
   return (
-    <div>
-      <Home />
-    </div>
-  )
+    <Web3Provider>
+      <div className="App">
+        <Navbar />
+        {/* Other components and pages */}
+      </div>
+    </Web3Provider>
+  );
 }
 
-export default App
+export default App;
